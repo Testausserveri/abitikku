@@ -15,7 +15,7 @@
  */
 
 import * as electron from 'electron';
-import * as sdk from 'etcher-sdk';
+import * as sdk from 'abitikku-sdk';
 import * as _ from 'lodash';
 import { DrivelistDrive } from '../../../shared/drive-constraints';
 

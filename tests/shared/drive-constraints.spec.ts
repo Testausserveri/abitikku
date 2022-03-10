@@ -15,7 +15,7 @@
  */
 
 import { expect } from 'chai';
-import { sourceDestination } from 'etcher-sdk';
+import { sourceDestination } from 'abitikku-sdk';
 import * as path from 'path';
 import { SourceMetadata } from '../../lib/gui/app/components/source-selector/source-selector';
 

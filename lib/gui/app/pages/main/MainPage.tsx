@@ -44,7 +44,7 @@ import { FlashStep } from './Flash';
 
 import AbiTikkuSvg from '../../../assets/abitikku.svg';
 import { SafeWebview } from '../../components/safe-webview/safe-webview';
-import { sourceDestination } from 'etcher-sdk';
+import { sourceDestination } from 'abitikku-sdk';
 import * as messages from '../../../../shared/messages';
 import * as supportedFormats from '../../../../shared/supported-formats';
 import * as analytics from '../../modules/analytics';
@@ -179,7 +179,7 @@ export class MainPage extends React.Component<
 				path: selected,
 			});
 		}
-		return new sourceDestination.Http({ url: selected });
+		return new sourceDestination.Http({ url: selected, useCache: true });
 	}
 
 	private handleError(

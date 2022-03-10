@@ -15,7 +15,7 @@
  */
 
 import { Drive as DrivelistDrive } from 'drivelist';
-import * as sdk from 'etcher-sdk';
+import * as sdk from 'abitikku-sdk';
 import { Dictionary } from 'lodash';
 import * as ipc from 'node-ipc';
 import * as os from 'os';

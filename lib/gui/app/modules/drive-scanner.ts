@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as sdk from 'etcher-sdk';
+import * as sdk from 'abitikku-sdk';
 import {
 	Adapter,
 	BlockDeviceAdapter,
