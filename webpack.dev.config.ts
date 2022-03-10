@@ -9,8 +9,6 @@ configs.forEach((config) => {
 	config.mode = 'development';
 	// @ts-ignore
 	config.devtool = 'source-map';
-	// @ts-ignore
-	config.watch = true;
 });
 
 guiConfig.devServer = {
