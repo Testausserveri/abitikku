@@ -190,6 +190,7 @@
     "settings": {
       "title": "Tietoja",
       "betaVersions": "Näytä betaversiot",
+      "useCache": "Tallenna Abitti-levykuva latauksen jälkeen",
       "updatesEnabled": "Automaattiset päivitykset",
       "about": "Abitikku on ohjelma, joka mahdollistaa helpon Abitti-järjestelmän asennuksen yhdelle tai useammalle tikulle ilman vaivaa ja säätöä."
     },

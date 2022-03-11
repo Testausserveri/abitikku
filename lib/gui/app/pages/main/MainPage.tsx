@@ -179,7 +179,7 @@ export class MainPage extends React.Component<
 				path: selected,
 			});
 		}
-		return new sourceDestination.Http({ url: selected, useCache: true });
+		return new sourceDestination.Http({ url: selected, useCache: await settings.get('useCache') });
 	}
 
 	private handleError(

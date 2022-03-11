@@ -81,6 +81,7 @@ const DEFAULT_SETTINGS: _.Dictionary<any> = {
 	desktopNotifications: true,
 	autoBlockmapping: true,
 	decompressFirst: true,
+	useCache: true,
 };
 
 const settings = _.cloneDeep(DEFAULT_SETTINGS);
