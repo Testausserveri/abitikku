@@ -64,7 +64,7 @@
     "@types/terser-webpack-plugin": "5.0.2",
     "@types/tmp": "0.2.0",
     "@types/webpack-node-externals": "2.5.0",
-    "abitikku-sdk": "github:Testausserveri/abitikku-sdk#57d27d2",
+    "abitikku-sdk": "github:Testausserveri/abitikku-sdk#ecc71ad4a22e1c81f707eb4e4e7c68cecfaa33f5",
     "aws4-axios": "2.2.1",
     "chai": "4.2.0",
     "copy-webpack-plugin": "7.0.0",
