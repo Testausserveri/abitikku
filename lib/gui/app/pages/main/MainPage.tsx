@@ -51,7 +51,7 @@ import * as analytics from '../../modules/analytics';
 import { replaceWindowsNetworkDriveLetter } from '../../os/windows-network-drives';
 import * as errors from '../../../../shared/errors';
 import * as osDialog from '../../os/dialog';
-import { Http } from 'etcher-sdk/build/source-destination';
+import { Http } from 'abitikku-sdk/build/source-destination';
 import { Version } from '../../models/version';
 import ConfigIcon from '@fortawesome/fontawesome-free/svgs/solid/cog.svg';
 import { IconButton as BaseIcon } from '../../styled-components';
