@@ -21,15 +21,15 @@ import {
 	Http,
 	Metadata,
 	SourceDestination,
-} from 'etcher-sdk/build/source-destination';
+} from 'abitikku-sdk/build/source-destination';
 import {
 	MultiDestinationProgress,
 	OnProgressFunction,
 	OnFailFunction,
 	decompressThenFlash,
 	DECOMPRESSED_IMAGE_PREFIX,
-} from 'etcher-sdk/build/multi-write';
-import { cleanupTmpFiles } from 'etcher-sdk/build/tmp';
+} from 'abitikku-sdk/build/multi-write';
+import { cleanupTmpFiles } from 'abitikku-sdk/build/tmp';
 import * as ipc from 'node-ipc';
 import { totalmem } from 'os';
 

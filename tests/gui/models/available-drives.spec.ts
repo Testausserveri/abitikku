@@ -15,7 +15,7 @@
  */
 
 import { expect } from 'chai';
-import { File } from 'etcher-sdk/build/source-destination';
+import { File } from 'abitikku-sdk/build/source-destination';
 import * as path from 'path';
 
 import * as availableDrives from '../../../lib/gui/app/models/available-drives';

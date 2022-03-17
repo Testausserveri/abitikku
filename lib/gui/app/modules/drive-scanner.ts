@@ -19,7 +19,7 @@ import {
 	Adapter,
 	BlockDeviceAdapter,
 	UsbbootDeviceAdapter,
-} from 'etcher-sdk/build/scanner/adapters';
+} from 'abitikku-sdk/build/scanner/adapters';
 import { geteuid, platform } from 'process';
 
 const adapters: Adapter[] = [
@@ -38,7 +38,7 @@ if (platform === 'win32') {
 	const {
 		DriverlessDeviceAdapter: driverless,
 		// tslint:disable-next-line:no-var-requires
-	} = require('etcher-sdk/build/scanner/adapters/driverless');
+	} = require('abitikku-sdk/build/scanner/adapters/driverless');
 	adapters.push(new driverless());
 }
 
