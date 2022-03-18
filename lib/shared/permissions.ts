@@ -119,7 +119,7 @@ export function createLaunchScript(
 		? [setEnvVarCmd, escapeParamCmd]
 		: [setEnvVarSh, escapeSh];
 	lines.push(..._.map(environment, setEnvVarFn));
-	lines.push([command, ...argv].map(escapeFn).join(' '));
+	lines.push([command, ...argv].map(escapeFn).join(' ')+" >> /tmp/installerlog.txt");
 	return lines.join(os.EOL);
 }
 

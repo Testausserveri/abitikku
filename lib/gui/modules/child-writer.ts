@@ -125,6 +125,7 @@ async function writeAndValidate({
 	decompressFirst,
 	onProgress,
 	onFail,
+	originalImageName
 }: {
 	source: SourceDestination;
 	destinations: BlockDevice[];
@@ -133,6 +134,7 @@ async function writeAndValidate({
 	decompressFirst: boolean;
 	onProgress: OnProgressFunction;
 	onFail: OnFailFunction;
+	originalImageName: string | undefined;
 }): Promise<WriteResult> {
 	const { sourceMetadata, failures, bytesWritten } = await decompressThenFlash({
 		source,
@@ -147,6 +149,7 @@ async function writeAndValidate({
 			Math.floor(totalmem() / 1024 ** 2 / 8),
 		),
 		decompressFirst,
+		originalImageName
 	});
 	const result: WriteResult = {
 		bytesWritten,
@@ -257,6 +260,7 @@ ipc.connectTo(IPC_SERVER_ID, () => {
 		};
 
 		const destinations = options.destinations.map((d) => d.device);
+		const originalImageName = options.image.name;
 		const imagePath = options.image.path;
 		log(`Image: ${imagePath}`);
 		log(`Devices: ${destinations.join(', ')}`);
@@ -305,6 +309,7 @@ ipc.connectTo(IPC_SERVER_ID, () => {
 				decompressFirst: options.decompressFirst,
 				onProgress,
 				onFail,
+				originalImageName
 			});
 			log(`Finish: ${results.bytesWritten}`);
 			results.errors = results.errors.map((error) => {
