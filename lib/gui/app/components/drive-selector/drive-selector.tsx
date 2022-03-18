@@ -16,7 +16,7 @@
 
 import ExclamationTriangleSvg from '@fortawesome/fontawesome-free/svgs/solid/exclamation-triangle.svg';
 import ChevronDownSvg from '@fortawesome/fontawesome-free/svgs/solid/chevron-down.svg';
-import * as sourceDestination from 'abitikku-sdk/build/source-destination/';
+import * as sourceDestination from '@testausserveri/abitikku-sdk/build/source-destination/';
 import * as React from 'react';
 import { Flex, ModalProps, Txt, Badge, Link } from 'rendition';
 import styled from 'styled-components';

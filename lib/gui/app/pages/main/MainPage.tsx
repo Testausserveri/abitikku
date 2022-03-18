@@ -44,14 +44,14 @@ import { FlashStep } from './Flash';
 
 import AbiTikkuSvg from '../../../assets/abitikku.svg';
 import { SafeWebview } from '../../components/safe-webview/safe-webview';
-import { sourceDestination } from 'abitikku-sdk';
+import { sourceDestination } from '@testausserveri/abitikku-sdk';
 import * as messages from '../../../../shared/messages';
 import * as supportedFormats from '../../../../shared/supported-formats';
 import * as analytics from '../../modules/analytics';
 import { replaceWindowsNetworkDriveLetter } from '../../os/windows-network-drives';
 import * as errors from '../../../../shared/errors';
 import * as osDialog from '../../os/dialog';
-import { Http } from 'abitikku-sdk/build/source-destination';
+import { Http } from '@testausserveri/abitikku-sdk/build/source-destination';
 import { Version } from '../../models/version';
 import ConfigIcon from '@fortawesome/fontawesome-free/svgs/solid/cog.svg';
 import { IconButton as BaseIcon } from '../../styled-components';
@@ -179,7 +179,10 @@ export class MainPage extends React.Component<
 				path: selected,
 			});
 		}
-		return new sourceDestination.Http({ url: selected, useCache: await settings.get('useCache') });
+		return new sourceDestination.Http({
+			url: selected,
+			useCache: await settings.get('useCache'),
+		});
 	}
 
 	private handleError(

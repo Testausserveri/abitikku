@@ -15,7 +15,7 @@
  */
 
 import { expect } from 'chai';
-import { sourceDestination } from 'abitikku-sdk';
+import { sourceDestination } from '@testausserveri/abitikku-sdk';
 import * as path from 'path';
 import { SourceMetadata } from '../../lib/gui/app/components/source-selector/source-selector';
 

@@ -15,7 +15,7 @@
  */
 
 import { Drive as DrivelistDrive } from 'drivelist';
-import * as sdk from 'abitikku-sdk';
+import * as sdk from '@testausserveri/abitikku-sdk';
 import { Dictionary } from 'lodash';
 import * as ipc from 'node-ipc';
 import * as os from 'os';

@@ -43,7 +43,7 @@ async function getSettingsList(): Promise<Setting[]> {
 		{
 			name: 'useCache',
 			label: i18n.t('gui.settings.useCache'),
-		}
+		},
 	];
 	if (['appimage', 'nsis', 'dmg'].includes(packageType)) {
 		list.push({

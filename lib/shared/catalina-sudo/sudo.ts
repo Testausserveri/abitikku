@@ -41,7 +41,7 @@ export async function sudo(
 						getAppPath(),
 						__dirname,
 						'sudo-askpass.osascript.js',
-					)
+					),
 				},
 			},
 		);

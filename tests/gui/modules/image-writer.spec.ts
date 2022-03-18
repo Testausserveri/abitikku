@@ -16,7 +16,7 @@
 
 import { expect } from 'chai';
 import { Drive as DrivelistDrive } from 'drivelist';
-import { sourceDestination } from 'abitikku-sdk';
+import { sourceDestination } from '@testausserveri/abitikku-sdk';
 import * as ipc from 'node-ipc';
 import { assert, SinonStub, stub } from 'sinon';
 

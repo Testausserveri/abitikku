@@ -15,7 +15,7 @@
  */
 
 import * as childProcess from 'child_process';
-import { withTmpFile } from 'abitikku-sdk/build/tmp';
+import { withTmpFile } from '@testausserveri/abitikku-sdk/build/tmp';
 import { promises as fs } from 'fs';
 import * as _ from 'lodash';
 import * as os from 'os';
