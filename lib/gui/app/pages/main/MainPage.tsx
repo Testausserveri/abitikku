@@ -287,15 +287,12 @@ export class MainPage extends React.Component<
 		let cacheEnabled = await settings.get('useCache');
 		if (cacheEnabled) {
 			let localCacheFile = await getLocalCacheFile();
-			console.log(localCacheFile);
 			if (localCacheFile !== undefined) {
 				// Check if newer version is available before using cache
 				try {
 					let httpSource = await this.createSource(abittiDownloadUrl, sourceDestination.Http);
 					let meta = await (await httpSource.getInnerSource()).getMetadata();
-					console.log(meta, localCacheFile);
 					let needsUpdate = (meta.name !== localCacheFile.metadata.version)
-					console.log("NY", needsUpdate);
 					if (needsUpdate) {
 						await this.setSourceImage(abittiDownloadUrl, sourceDestination.Http);
 						return;
@@ -303,7 +300,6 @@ export class MainPage extends React.Component<
 				} catch (e) {
 					console.log("Latest version check failed with error: ", e);
 				}
-				console.log("Set source as cache")
 				await this.setSourceImage(localCacheFile.name, sourceDestination.File);
 				return;
 			}

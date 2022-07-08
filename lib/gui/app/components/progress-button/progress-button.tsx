@@ -81,7 +81,7 @@ const CancelButton = styled(({ type, onClick, ...props }) => {
 			? i18n.t('common.action.skip')
 			: i18n.t('common.action.cancel');
 	return (
-		<Button plain onClick={() => onClick(status)} {...props}>
+		<Button plain onClick={() => onClick(type === 'verifying' ? 'skip' : 'cancel')} {...props}>
 			{status}
 		</Button>
 	);

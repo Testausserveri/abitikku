@@ -28,7 +28,7 @@ import * as EXIT_CODES from '../../shared/exit-codes';
 import * as messages from '../../shared/messages';
 import * as availableDrives from './models/available-drives';
 import * as flashState from './models/flash-state';
-import { deselectImage, getImage } from './models/selection-state';
+import {deselectImage, getImage, getSelectedDrives, selectDrive} from './models/selection-state';
 import * as settings from './models/settings';
 import { Actions, observe, store } from './models/store';
 import * as analytics from './modules/analytics';
@@ -239,6 +239,8 @@ async function addDrive(drive: Drive) {
 	const drives = getDrives();
 	drives[preparedDrive.device] = preparedDrive;
 	setDrives(drives);
+	if (drive.isSystem || getSelectedDrives().length > 0) return;
+	selectDrive(preparedDrive.device)
 }
 
 function removeDrive(drive: Drive) {
