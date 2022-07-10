@@ -59,6 +59,8 @@ import styled from 'styled-components';
 import i18n from '../../../../shared/i18n';
 import { LanguageSelector } from '../../components/language-selector/language-selector';
 
+import {getLocalCacheFile} from '@testausserveri/abitikku-sdk/build/multi-write'
+
 export type Source =
 	| typeof sourceDestination.File
 	| typeof sourceDestination.BlockDevice
@@ -181,7 +183,6 @@ export class MainPage extends React.Component<
 		}
 		return new sourceDestination.Http({
 			url: selected,
-			useCache: await settings.get('useCache'),
 		});
 	}
 
@@ -278,6 +279,31 @@ export class MainPage extends React.Component<
 			this.setState(this.stateHelper());
 		});
 		this.setState({ featuredProjectURL: await this.getFeaturedProjectURL() });
+		await this.updateSource();
+	}
+
+	private async updateSource() {
+		// Check cache situation
+		let cacheEnabled = await settings.get('useCache');
+		if (cacheEnabled) {
+			let localCacheFile = await getLocalCacheFile();
+			if (localCacheFile !== undefined) {
+				// Check if newer version is available before using cache
+				try {
+					let httpSource = await this.createSource(abittiDownloadUrl, sourceDestination.Http);
+					let meta = await (await httpSource.getInnerSource()).getMetadata();
+					let needsUpdate = (meta.name !== localCacheFile.metadata.version)
+					if (needsUpdate) {
+						await this.setSourceImage(abittiDownloadUrl, sourceDestination.Http);
+						return;
+					}
+				} catch (e) {
+					console.log("Latest version check failed with error: ", e);
+				}
+				await this.setSourceImage(localCacheFile.name, sourceDestination.File);
+				return;
+			}
+		}
 		await this.setSourceImage(abittiDownloadUrl, sourceDestination.Http);
 	}
 
