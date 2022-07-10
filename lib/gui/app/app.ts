@@ -15,7 +15,7 @@
  */
 
 import * as electron from 'electron';
-import * as sdk from 'etcher-sdk';
+import * as sdk from '@testausserveri/abitikku-sdk';
 import * as _ from 'lodash';
 import outdent from 'outdent';
 import * as React from 'react';
@@ -28,7 +28,7 @@ import * as EXIT_CODES from '../../shared/exit-codes';
 import * as messages from '../../shared/messages';
 import * as availableDrives from './models/available-drives';
 import * as flashState from './models/flash-state';
-import { deselectImage, getImage } from './models/selection-state';
+import {deselectImage, getImage, getSelectedDrives, selectDrive} from './models/selection-state';
 import * as settings from './models/settings';
 import { Actions, observe, store } from './models/store';
 import * as analytics from './modules/analytics';
@@ -38,7 +38,7 @@ import * as osDialog from './os/dialog';
 import * as windowProgress from './os/window-progress';
 import MainPage from './pages/main/MainPage';
 import './css/main.css';
-import i18n from '../../shared/i18n';
+import i18n, { initPromise as i18nInit } from '../../shared/i18n';
 
 window.addEventListener(
 	'unhandledrejection',
@@ -186,25 +186,12 @@ async function driveIsAllowed(drive: {
 
 type Drive =
 	| sdk.sourceDestination.BlockDevice
-	| sdk.sourceDestination.UsbbootDrive
 	| sdk.sourceDestination.DriverlessDevice;
 
 function prepareDrive(drive: Drive) {
 	if (drive instanceof sdk.sourceDestination.BlockDevice) {
 		// @ts-ignore (BlockDevice.drive is private)
 		return drive.drive;
-	} else if (drive instanceof sdk.sourceDestination.UsbbootDrive) {
-		// This is a workaround etcher expecting a device string and a size
-		// @ts-ignore
-		drive.device = drive.usbDevice.portId;
-		drive.size = null;
-		// @ts-ignore
-		drive.progress = 0;
-		drive.disabled = true;
-		drive.on('progress', (progress) => {
-			updateDriveProgress(drive, progress);
-		});
-		return drive;
 	} else if (drive instanceof sdk.sourceDestination.DriverlessDevice) {
 		const description =
 			COMPUTE_MODULE_DESCRIPTIONS[
@@ -252,6 +239,8 @@ async function addDrive(drive: Drive) {
 	const drives = getDrives();
 	drives[preparedDrive.device] = preparedDrive;
 	setDrives(drives);
+	if (drive.isSystem || getSelectedDrives().length > 0) return;
+	selectDrive(preparedDrive.device)
 }
 
 function removeDrive(drive: Drive) {
@@ -268,20 +257,6 @@ function removeDrive(drive: Drive) {
 	const drives = getDrives();
 	delete drives[preparedDrive.device];
 	setDrives(drives);
-}
-
-function updateDriveProgress(
-	drive: sdk.sourceDestination.UsbbootDrive,
-	progress: number,
-) {
-	const drives = getDrives();
-	// @ts-ignore
-	const driveInMap = drives[drive.device];
-	if (driveInMap) {
-		// @ts-ignore
-		drives[drive.device] = { ...driveInMap, progress };
-		setDrives(drives);
-	}
 }
 
 driveScanner.on('attach', addDrive);
@@ -348,6 +323,9 @@ export async function main() {
 	try {
 		const { init: ledsInit } = require('./models/leds');
 		await ledsInit();
+		await i18nInit.then(() =>
+			settings.get('language').then(i18n.changeLanguage),
+		);
 	} catch (error: any) {
 		exceptionReporter.report(error);
 	}

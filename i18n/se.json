@@ -188,6 +188,7 @@
     "settings": {
       "title": "Inställningar",
       "betaVersions": "Visa beta-versioner",
+      "useCache": "Spara Abitti-skivbilden efter nedladdning",
       "updatesEnabled": "Automatiska uppdateringar",
       "about": "Abitikku är ett program som möjliggör en enkel installation av Abitti-systemet till en eller flera minnestickor utan krångel."
     },

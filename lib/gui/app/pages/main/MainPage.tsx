@@ -44,20 +44,22 @@ import { FlashStep } from './Flash';
 
 import AbiTikkuSvg from '../../../assets/abitikku.svg';
 import { SafeWebview } from '../../components/safe-webview/safe-webview';
-import { sourceDestination } from 'etcher-sdk';
+import { sourceDestination } from '@testausserveri/abitikku-sdk';
 import * as messages from '../../../../shared/messages';
 import * as supportedFormats from '../../../../shared/supported-formats';
 import * as analytics from '../../modules/analytics';
 import { replaceWindowsNetworkDriveLetter } from '../../os/windows-network-drives';
 import * as errors from '../../../../shared/errors';
 import * as osDialog from '../../os/dialog';
-import { Http } from 'etcher-sdk/build/source-destination';
+import { Http } from '@testausserveri/abitikku-sdk/build/source-destination';
 import { Version } from '../../models/version';
 import ConfigIcon from '@fortawesome/fontawesome-free/svgs/solid/cog.svg';
 import { IconButton as BaseIcon } from '../../styled-components';
 import styled from 'styled-components';
 import i18n from '../../../../shared/i18n';
 import { LanguageSelector } from '../../components/language-selector/language-selector';
+
+import {getLocalCacheFile} from '@testausserveri/abitikku-sdk/build/multi-write'
 
 export type Source =
 	| typeof sourceDestination.File
@@ -179,7 +181,9 @@ export class MainPage extends React.Component<
 				path: selected,
 			});
 		}
-		return new sourceDestination.Http({ url: selected });
+		return new sourceDestination.Http({
+			url: selected,
+		});
 	}
 
 	private handleError(
@@ -275,6 +279,31 @@ export class MainPage extends React.Component<
 			this.setState(this.stateHelper());
 		});
 		this.setState({ featuredProjectURL: await this.getFeaturedProjectURL() });
+		await this.updateSource();
+	}
+
+	private async updateSource() {
+		// Check cache situation
+		let cacheEnabled = await settings.get('useCache');
+		if (cacheEnabled) {
+			let localCacheFile = await getLocalCacheFile();
+			if (localCacheFile !== undefined) {
+				// Check if newer version is available before using cache
+				try {
+					let httpSource = await this.createSource(abittiDownloadUrl, sourceDestination.Http);
+					let meta = await (await httpSource.getInnerSource()).getMetadata();
+					let needsUpdate = (meta.name !== localCacheFile.metadata.version)
+					if (needsUpdate) {
+						await this.setSourceImage(abittiDownloadUrl, sourceDestination.Http);
+						return;
+					}
+				} catch (e) {
+					console.log("Latest version check failed with error: ", e);
+				}
+				await this.setSourceImage(localCacheFile.name, sourceDestination.File);
+				return;
+			}
+		}
 		await this.setSourceImage(abittiDownloadUrl, sourceDestination.Http);
 	}
 

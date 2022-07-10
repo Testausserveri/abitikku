@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-import * as sdk from 'etcher-sdk';
+import * as sdk from '@testausserveri/abitikku-sdk';
 import {
 	Adapter,
 	BlockDeviceAdapter,
-	UsbbootDeviceAdapter,
-} from 'etcher-sdk/build/scanner/adapters';
-import { geteuid, platform } from 'process';
+} from '@testausserveri/abitikku-sdk/build/scanner/adapters';
+import { platform } from 'process';
 
 const adapters: Adapter[] = [
 	new BlockDeviceAdapter({
@@ -28,17 +27,11 @@ const adapters: Adapter[] = [
 	}),
 ];
 
-// Can't use permissions.isElevated() here as it returns a promise and we need to set
-// module.exports = scanner right now.
-if (platform !== 'linux' || geteuid() === 0) {
-	adapters.push(new UsbbootDeviceAdapter());
-}
-
 if (platform === 'win32') {
 	const {
 		DriverlessDeviceAdapter: driverless,
 		// tslint:disable-next-line:no-var-requires
-	} = require('etcher-sdk/build/scanner/adapters/driverless');
+	} = require('@testausserveri/abitikku-sdk/build/scanner/adapters/driverless');
 	adapters.push(new driverless());
 }
 

@@ -174,7 +174,6 @@ class WrapVersionSelector extends React.Component<
 			.then(async (versionResult) => {
 				versionResult.koe = versionResult.koe.reverse();
 				versionResult.ktp = versionResult.ktp.reverse();
-				console.log(await settings.get('betaVersions'));
 				if (!(await settings.get('betaVersions'))) {
 					versionResult.ktp = versionResult.ktp.filter((i) => {
 						return !i.beta;

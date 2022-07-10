@@ -15,12 +15,12 @@
  */
 
 import * as childProcess from 'child_process';
-import { withTmpFile } from 'etcher-sdk/build/tmp';
+import { withTmpFile } from '@testausserveri/abitikku-sdk/build/tmp';
 import { promises as fs } from 'fs';
 import * as _ from 'lodash';
 import * as os from 'os';
 import * as semver from 'semver';
-import * as sudoPrompt from '@balena/sudo-prompt';
+import * as sudoPrompt from 'sudo-prompt';
 import { promisify } from 'util';
 
 import { sudo as catalinaSudo } from './catalina-sudo/sudo';

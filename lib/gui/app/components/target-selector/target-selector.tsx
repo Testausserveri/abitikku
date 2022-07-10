@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { scanner } from 'etcher-sdk';
+import { scanner } from '@testausserveri/abitikku-sdk';
 import * as React from 'react';
 import { Flex, Txt } from 'rendition';
 

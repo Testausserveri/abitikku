@@ -18,7 +18,6 @@ import { execFile } from 'child_process';
 import { join } from 'path';
 import { env } from 'process';
 import { promisify } from 'util';
-import i18n from '../i18n';
 
 import { getAppPath } from '../utils';
 
@@ -43,9 +42,6 @@ export async function sudo(
 						__dirname,
 						'sudo-askpass.osascript.js',
 					),
-					OK: i18n.t('common.action.ok'),
-					CANCEL: i18n.t('common.action.cancel'),
-					DIALOG: i18n.t('shared.messages.sudo.privilegedAccessRequred'),
 				},
 			},
 		);
