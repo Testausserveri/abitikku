@@ -13,8 +13,8 @@ jobs:
       - name: Build
         run: |
           echo $env:PATH
-          C:\msys\1.0\bin\make.exe electron-develop
-          C:\msys\1.0\bin\make.exe electron-build
+          make electron-develop
+          make electron-build
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
@@ -56,8 +56,8 @@ jobs:
           git config --global url."https://github.com/".insteadOf git@github.com:
           git config --global url."https://".insteadOf git://
 
-          C:\msys\1.0\bin\make.exe electron-develop
+          make electron-develop
           npm test
-          C:\msys\1.0\bin\make.exe electron-build
+          make electron-build
 
 
