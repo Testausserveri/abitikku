@@ -12,7 +12,7 @@ jobs:
 
       - name: Build
         run: |
-          echo $env:PATH
+          $env:GITHUB_ACTIONS = $env:CI = False
           make electron-develop
           make electron-build
 
