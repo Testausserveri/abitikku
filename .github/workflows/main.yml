@@ -42,7 +42,7 @@ jobs:
       - name: Build
         run: |
           unset GITHUB_ACTIONS CI
-          sudo npm cache clean
+          sudo npm cache clean --force
           make electron-develop
           make electron-build
 
@@ -75,6 +75,7 @@ jobs:
       - name: Build
         run: |
           unset GITHUB_ACTIONS CI
+          export PATH="/usr/local/opt/file-formula/bin:$PATH"
           make electron-develop
           make electron-build
 
