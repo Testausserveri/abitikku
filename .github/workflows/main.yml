@@ -44,6 +44,7 @@ jobs:
           
       - name: Setup abitikku environment, test and build
         run: |
+          pip install -r requirements.txt
           git clone --recursive https://github.com/Testausserveri/abitikku.git abitikku_master
           cd abitikku_master
           
