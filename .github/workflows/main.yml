@@ -53,3 +53,31 @@ jobs:
             dist/*.AppImage
             dist/*.rpm
             dist/*.deb
+
+  build-macos:
+    runs-on: macos-11
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.16.0
+
+      - name: Setup python
+        run: pip install -r requirements.txt
+
+      - name: Build
+        run: |
+          unset GITHUB_ACTIONS CI
+          make electron-develop
+          make electron-build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-artifacts
+          path: |
+            dist/*.zip
+            dist/*.dmg
