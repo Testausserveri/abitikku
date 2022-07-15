@@ -33,7 +33,7 @@ jobs:
           
       - name: Install required packages
         run: |
-          sudo apt install -y libudev-dev curl make
+          sudo apt install -y libudev-dev curl make jq
           
       - name: Setup Python
         uses: actions/setup-python@v2.2.2
