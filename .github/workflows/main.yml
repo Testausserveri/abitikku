@@ -12,8 +12,9 @@ jobs:
 
       - name: Build
         run: |
-          make electron-develop
-          make electron-build
+          echo $env:PATH
+          C:\msys\1.0\bin\make.exe electron-develop
+          C:\msys\1.0\bin\make.exe electron-build
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
@@ -35,7 +36,7 @@ jobs:
         with:
           architecture: x64
           node-version: v14.20.0
-          
+
       - name: Install required packages
         run: |
           sudo apt install -y libudev-dev curl make
