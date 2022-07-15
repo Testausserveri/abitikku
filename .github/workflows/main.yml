@@ -56,8 +56,8 @@ jobs:
           git config --global url."https://github.com/".insteadOf git@github.com:
           git config --global url."https://".insteadOf git://
 
-          make electron-develop
+          C:\msys\1.0\bin\make.exe electron-develop
           npm test
-          make electron-build
+          C:\msys\1.0\bin\make.exe electron-build
 
 
