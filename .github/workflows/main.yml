@@ -1,23 +1,28 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-#  push:
-#    branches: [ master ]
-#  pull_request:
-#    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  build-windows:
+    runs-on: [self-hosted, abitikku-windows]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          make electron-develop
+          make electron-build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-artifacts
+          path: dist/*.exe
+
+
   build-linux:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -34,24 +39,24 @@ jobs:
       - name: Install required packages
         run: |
           sudo apt install -y libudev-dev curl make
-          
+
       - name: Setup Python
         uses: actions/setup-python@v2.2.2
         with:
           architecture: x64
           python-version: 2.7
 
-          
+
       - name: Setup abitikku environment, test and build
         run: |
           git clone --recursive https://github.com/Testausserveri/abitikku.git abitikku_master
           cd abitikku_master
-          
+
           git config --global url."https://github.com/".insteadOf git@github.com:
           git config --global url."https://".insteadOf git://
-          
+
           make electron-develop
           npm test
           make electron-build
-      
-      
+
+
