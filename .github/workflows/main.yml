@@ -42,6 +42,7 @@ jobs:
       - name: Build
         run: |
           unset GITHUB_ACTIONS CI
+          sudo npm cache clean
           make electron-develop
           make electron-build
 
@@ -67,6 +68,9 @@ jobs:
 
       - name: Setup python
         run: pip install -r requirements.txt
+
+      - name: Setup latest file command
+        run: brew install file-formula
 
       - name: Build
         run: |
