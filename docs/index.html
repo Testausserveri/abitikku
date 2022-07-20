@@ -15,12 +15,18 @@
     <body>
         <div class="center">
             <header>
-                <div class="languageSelector">
-                    <!--TODO: css magic -->
-                    <button onclick="changeLang('fi')">SUOMEKSI</button>
-                    <button onclick="changeLang('se')">PÅ SVENSKA</button>
-                    <button onclick="changeLang('en')">IN ENGLISH</button>
-                </div>
+                <ul class="languageSelector">
+                    <!-- to-do: implement class="enabled" changing logic in js -->
+                    <li class="enabled">
+                        <a onclick="changeLang('fi')">SUOMEKSI</a>
+                    </li>
+                    <li>
+                        <a onclick="changeLang('se')">PÅ SVENSKA</a>
+                    </li>
+                    <li>
+                        <a onclick="changeLang('en')">IN ENGLISH</a>
+                    </li>
+                </ul>
                 <img src="images/icon.png" alt="Abitikku logo" />
                 <h1>Abitikku</h1>
             </header>
