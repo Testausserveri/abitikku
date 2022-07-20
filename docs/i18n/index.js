@@ -25,3 +25,11 @@ export function getTranslation(lang, key) {
     }
     return current;
 }
+
+/**
+ * @param {string} lang
+ * @returns {boolean}
+ */
+export function isLanguageSupported(lang) {
+    return lang in translations;
+}

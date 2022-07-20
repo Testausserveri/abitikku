@@ -1,4 +1,4 @@
-import { getTranslation } from "./i18n/index.js";
+import { getTranslation, isLanguageSupported } from "./i18n/index.js";
 
 const platformIcons = {
     exe: "fa-windows",
@@ -23,11 +23,18 @@ function setLang(lang) {
 }
 
 function changeLang(lang) {
+    for (const child of document.getElementsByClassName("languageSelector")[0].children) {
+        child.className = child.id === lang ? "enabled" : "";
+    }
     setLang(lang);
     updateMainPage();
 }
 
 window.changeLang = changeLang;
+
+if (!isLanguageSupported(getLang())) {
+    setLang("en");
+}
 
 function updateMainPage() {
     if (!window.abitikkuReleases) return;
@@ -114,5 +121,5 @@ fetch("https://api.github.com/repos/testausserveri/abitikku/releases/latest")
         };
 
         updateLinks(tag_name, downloadLinks)
-        updateMainPage()
+        changeLang(getLang()) // sets the enabled class to the right button
     })
