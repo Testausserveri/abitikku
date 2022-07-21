@@ -45,7 +45,7 @@
   },
   "build": {
     "mac": {
-      "x64ArchFiles": "**/ymmv/**"
+      "mergeASARs": true
     }
   },
   "author": "Testausserveri <masterminds@testausserveri.fi>",
