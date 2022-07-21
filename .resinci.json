@@ -28,6 +28,7 @@
       "mac": {
         "category": "public.app-category.developer-tools",
         "hardenedRuntime": true,
+        "x64ArchFiles": "**/ymmv/**",
         "entitlements": "entitlements.mac.plist",
         "entitlementsInherit": "entitlements.mac.plist",
         "artifactName": "${productName}-${version}.${ext}"
