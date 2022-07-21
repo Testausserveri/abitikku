@@ -45,7 +45,7 @@
   },
   "mac": {
     "x64ArchFiles": "**/ymmv/**"
-  }
+  },
   "author": "Testausserveri <masterminds@testausserveri.fi>",
   "license": "Apache-2.0",
   "devDependencies": {
