@@ -84,6 +84,8 @@ jobs:
           pip install -r requirements.txt
           
           make electron-develop
+          cd node_modules/app-builder-lib
+          npm install @electron/universal@latest
           make electron-build
       
       
