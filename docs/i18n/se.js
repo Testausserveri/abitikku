@@ -1,8 +1,8 @@
 export default {
     mainPage: {
         section1:
-            "Abitikku är det enklaste sättet att skapa en Abitti-sticka. Inga flera gråa hår till gymnasieelever " +
-            "med ett lättanvänt ett-klicks installationsprogram.",
+            "Abitikku är det enklaste sättet att skapa en Abitti-sticka. Inga flera besvär för gymnasieelever " +
+            "tack vare ett lättanvänt ett-klicks installationsprogram.",
         section2:
             'Abitikku laddar ner den senaste officiella Abitti-skivavbilden och installerar den till din USB-sticka, med ett enda klick. ' +
             'Programmet erbjuds gratis av teamet som bland annat har utvecklat <a href="https://matikkaeditori.fi">Matikkaeditori.fi</a> och hittat ' +
@@ -12,7 +12,7 @@ export default {
         footer3: "Instruktionsvideon är gjord av Misha Lindvall.",
         version: "Abitikkus senaste version är ",
         loadFail:
-            "Valitettavasti versioiden hakeminen epäonnistui. Pyydämme sinua ottamaan yhteyttä Abitikun tukeen.",
+            "Tyvärr misslyckades hämtningen av Abitikku-versionerna. Var god och kontakta Abitikku-stödet.",
     },
     download: {
         download: "Ladda ner ",
