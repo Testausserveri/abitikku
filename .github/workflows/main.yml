@@ -86,6 +86,7 @@ jobs:
           make electron-develop
           cd node_modules/app-builder-lib
           npm install @electron/universal@latest
+          cd ../..
           make electron-build
       
       
