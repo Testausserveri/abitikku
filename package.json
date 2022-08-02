@@ -2,7 +2,7 @@
   "name": "abitikku",
   "private": true,
   "displayName": "Abitikku",
-  "version": "1.0.2",
+  "version": "1.1",
   "packageType": "local",
   "main": "generated/abitikku.js",
   "description": "Flash Abitti to USB drives, safely and easily.",
