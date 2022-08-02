@@ -10,7 +10,7 @@ export default {
         section3: 'Support is available at <a href="https://discord.testausserveri.fi">our Discord-server</a>. <span id="versionText"></span>',
         footer1: 'This project is also published as open source to <a href="https://github.com/testausserveri/abitikku">Github</a>.',
         footer3: "The instruction video is made by Misha Lindvall.",
-        version: "The latest version of abitikku is ",
+        version: "The latest version of Abitikku is ",
         loadFail:
             "Unfortunately fetching the latest version failed. Please contact the Abitikku support.",
     },
