@@ -1,5 +1,5 @@
 body {
-    background-color: #E8E8E8;
+    background-color: #e8e8e8;
     --section-gap: 4rem;
 }
 
@@ -22,7 +22,8 @@ h1 {
     max-width: 600px;
 }
 
-header, section {
+header,
+section {
     margin-bottom: var(--section-gap);
 }
 
@@ -37,7 +38,7 @@ header img {
 button {
     -webkit-appearance: none;
     border-radius: 6px;
-    background-color: #2E6CCB;
+    background-color: #2e6ccb;
     text-align: center;
     border: none;
     width: 100%;
@@ -47,12 +48,12 @@ button {
     color: white;
     padding: 1.7rem;
     cursor: pointer;
-    box-shadow: 0 4px 4px 0px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.25);
     transition: box-shadow 0.2s ease-in, background-color 0.1s ease-in;
 }
 
 button:hover {
-    box-shadow: 0 4px 12px 0px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
     background-color: #2961b6;
 }
 
@@ -64,9 +65,9 @@ a.secondary-button {
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    color: #2E6CCB;
+    color: #2e6ccb;
     text-decoration: none;
-    margin-top: .8rem;
+    margin-top: 0.8rem;
     display: inline-block;
     transition: color 0.1s ease-in;
 }
@@ -80,8 +81,8 @@ a.secondary-button:hover {
 }
 
 p {
-    font-family: 'Roboto', sans-serif;
-    color: rgba(0,0,0,0.8);
+    font-family: "Roboto", sans-serif;
+    color: rgba(0, 0, 0, 0.8);
     font-size: 1rem;
     line-height: 1.5;
 }
@@ -94,8 +95,8 @@ p a {
 }
 
 p a::before {
-    content: '';
-    background-color: rgba(0,0,0,0.04);
+    content: "";
+    background-color: rgba(0, 0, 0, 0.04);
     z-index: -2;
     position: absolute;
     top: -0.1rem;
@@ -107,8 +108,8 @@ p a::before {
     transition: background-color 0.1s;
 }
 p a:hover:before {
-    content: '';
-    background-color: rgba(0,0,0,0.08);
+    content: "";
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
 .youtubeEmbed {
@@ -135,8 +136,8 @@ footer {
 
 .testausserveriLogo {
     max-width: 130px;
-    opacity: .82;
-    transition: opacity .1s;
+    opacity: 0.82;
+    transition: opacity 0.1s;
 }
 
 .testausserveriLogo:hover {
@@ -157,4 +158,61 @@ footer p {
 .screenshots img {
     border-radius: 6px;
     width: 100%;
+}
+
+.languageSelector {
+    text-align: center;
+    margin-bottom: var(--section-gap);
+    list-style-type: none;
+    padding: 0;
+}
+
+.languageSelector li {
+    display: inline-block;
+}
+
+.languageSelector li a {
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    cursor: pointer !important;
+    margin: 0;
+    color: #444;
+    box-shadow: none;
+    padding: 0;
+    width: auto;
+    font-size: 1em;
+    text-align: left;
+    position: relative;
+}
+
+.languageSelector li:not(:nth-last-child(1))::after {
+    content: "";
+    margin: 0 1em 0 0.8em;
+    border-right: 1px solid #888;
+}
+
+.languageSelector li.enabled a {
+    color: rgb(0, 110, 210);
+}
+
+.languageSelector li a:before {
+    content: "";
+    position: absolute;
+    top: -0.2rem;
+    left: -0.2rem;
+    width: 100%;
+    height: 100%;
+    padding: 0.2rem;
+    z-index: 0;
+    border-radius: 4rem;
+    transition: background-color 0.1s;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.languageSelector li a:hover:before {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.languageSelector li a:not(:nth-last-child(1)):hover:before {
+    width: calc(100% - 2em);
 }

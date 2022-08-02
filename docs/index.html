@@ -4,17 +4,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         <link rel="icon" type="image/png" href="images/icon.png">
-        <link rel="preconnect" href="https://fonts.googleapis.com"> 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css" />
         <script src="https://kit.fontawesome.com/6c6068ea6e.js" crossorigin="anonymous"></script>
         <script src="bower_components/sniffr/dist/sniffr.min.js"></script>
-        <script src="script.js"></script>
+        <script src="script.js" type="module"></script>
     </head>
     <body>
         <div class="center">
             <header>
+                <ul class="languageSelector">
+                    <li id="fi" class="enabled">
+                        <a onclick="changeLang('fi')">SUOMEKSI</a>
+                    </li>
+                    <li id="se">
+                        <a onclick="changeLang('se')">PÅ SVENSKA</a>
+                    </li>
+                    <li id="en">
+                        <a onclick="changeLang('en')">IN ENGLISH</a>
+                    </li>
+                </ul>
                 <img src="images/icon.png" alt="Abitikku logo" />
                 <h1>Abitikku</h1>
             </header>
@@ -22,16 +33,16 @@
                 <a id="downloadLink">
                     <button><i class="fab fa-windows"></i> <span id="downloadText">Lataa Windowsille</span></button>
                 </a>
-                <a href="https://github.com/testausserveri/abitikku/releases" class="secondary-button">Muut latausvaihtoehdot</a>
+                <a id="otherDownloads" href="https://github.com/testausserveri/abitikku/releases" class="secondary-button">Muut latausvaihtoehdot</a>
             </section>
             <section>
-                <p>
+                <p id="section1">
                     Abitikku on helpoin tapa luoda Abitti-tikku. Ei enää harmaita hiuksia lukiolaisille, vaan helppokäyttöinen yhden klikkauksen asennusohjelma.
                 </p>
-                <p>
+                <p id="section2">
                     Abitikku lataa uusimman virallisen Abitti-levykuvan ja asentaa sen tikullesi, vain yhdellä klikkauksella. Ohjelman tarjoavat ilmaiseksi muun muassa <a href="https://matikkaeditori.fi">Matikkaeditori.fin</a> kehittänyt ja <a href="https://abitti.testausserveri.fi">Abitti Open Access-haavoittuvuuden</a> löytänyt tiimi.
                 </p>
-                <p>
+                <p id="section3">
                     Tukea on saatavilla <a href="https://discord.testausserveri.fi">Discord-palvelimellamme</a>. <span id="versionText"></span>
                 </p>
             </section>
@@ -55,9 +66,9 @@
                     </a>
                 </div>
                 <div>
-                    <p>Tämä projekti on myös julkaistu avoimena lähdekoodina <a href="https://github.com/testausserveri/abitikku">GitHubiin</a>.</p><br />
-                    <p>© Ruben Mkrtumyan, Mikael Hannolainen, Eemil Sinkko</p>
-                    <p>Ohjevideon on tehnyt Misha Lindvall.</p>
+                    <p id="footer1">Tämä projekti on myös julkaistu avoimena lähdekoodina <a href="https://github.com/testausserveri/abitikku">GitHubiin</a>.</p><br />
+                    <p id="footer2">© Ruben Mkrtumyan, Mikael Hannolainen, Eemil Sinkko, Mikael Kantola</p>
+                    <p id="footer3">Ohjevideon on tehnyt Misha Lindvall.</p>
                 </div>
             </footer>
         </div>
