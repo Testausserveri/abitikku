@@ -59,6 +59,8 @@ jobs:
             dist/*.deb
 
   build-macos:
+    # Disable MacOS, because it's broken :D
+    if: ${{ false }}
     runs-on: macos-11
 
     steps:
