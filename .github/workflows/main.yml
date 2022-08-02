@@ -108,7 +108,7 @@ jobs:
           name: windows-artifacts
           
       - name: Copy artifacts to one dir
-        run: mv linux_artifacts/* windows_artifacts
+        run: mv linux-artifacts/* windows-artifacts
           
       # Make official GitHub release which will trigger
       # sending the mail with link for access
