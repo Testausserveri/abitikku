@@ -2,6 +2,9 @@ name: CI
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - 'prod-*'
 
 jobs:
   build-windows:
@@ -86,3 +89,29 @@ jobs:
           path: |
             dist/*.zip
             dist/*.dmg
+            
+  release:
+    runs-on: ubuntu-latest
+    needs: [build-windows,build-linux]
+    
+    steps:
+      # Download previously shared builds
+      - name: Get Linux artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: linux-artifacts
+      - name: Get Windows artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: windows-artifacts
+          
+      - name: Copy artifacts to one dir
+        run: rsync -a linux-artifact/ windows-artifacts/
+          
+      # Make official GitHub release which will trigger
+      # sending the mail with link for access
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: windows-artifacts/*
+          token: ${{ secrets.GITHUB_TOKEN }}
