@@ -108,7 +108,7 @@ jobs:
           name: windows-artifacts
           
       - name: Copy artifacts to one dir
-        run: rsync -a linux-artifact/ windows-artifacts/
+        run: rsync -a ./linux-artifact/ ./windows-artifacts/
           
       # Make official GitHub release which will trigger
       # sending the mail with link for access
