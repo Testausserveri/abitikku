@@ -72,7 +72,7 @@ jobs:
 
       - name: Setup python
         run: |
-           wget "https://raw.githubusercontent.com/python/cpython/main/Include/cpython/longintrepr.h" -O /usr/include/python3.11/longintrepr.h
+           wget "https://raw.githubusercontent.com/python/cpython/main/Include/cpython/longintrepr.h" -O /usr/include/python3.11.4/longintrepr.h
            pip install -r requirements.txt
 
       - name: Setup latest file command
