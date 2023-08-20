@@ -71,7 +71,9 @@ jobs:
           node-version: 14.16.0
 
       - name: Setup python
-        run: pip install -r requirements.txt
+        run: |
+           wget "https://raw.githubusercontent.com/python/cpython/main/Include/cpython/longintrepr.h" -O /usr/include/python3.11/longintrepr.h
+           pip install -r requirements.txt
 
       - name: Setup latest file command
         run: brew install file-formula
