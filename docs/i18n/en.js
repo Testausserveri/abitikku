@@ -1,4 +1,11 @@
 export default {
+    banner: {
+        text:
+            '⚠️ Abitikku is shutting down on 13.9.2026.<br/><br/>' +
+            'Starting with the autumn 2026 matriculation exams, schools use the new Abitti 2, which is installed directly on the candidate\'s computer instead of being booted from a USB drive.<br/><br/>' +
+            'Thanks to everyone who has used Abitikku over the years!<br/><br/>' +
+            'You can read more about Abitti 2 on the <a href="https://www.ylioppilastutkinto.fi/en">Matriculation Examination Board\'s website</a>.',
+    },
     mainPage: {
         section1:
             "Abitikku is the easiest method of creating an Abitikku USB drive. Avoid headaches for high schoolers " +

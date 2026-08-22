@@ -1,4 +1,10 @@
 export default {
+    banner: {
+        text:
+            '⚠️ Abitikku läggs ner den 13.9.2026.<br/><br/>' +
+            'Från och med höstens 2026 studentskrivningar används det nya Abitti 2, som installeras direkt på examinandens egen dator i stället för att startas från en USB-sticka.<br/><br/>' +
+            'Du kan läsa mer om Abitti 2 på <a href="https://www.ylioppilastutkinto.fi/sv">Studentexamensnämndens webbplats</a>.',
+    },
     mainPage: {
         section1:
             "Abitikku är det enklaste sättet att skapa en Abitti-sticka. Inga flera besvär för gymnasieelever " +
