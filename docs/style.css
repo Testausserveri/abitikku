@@ -1,6 +1,30 @@
 body {
+    margin: 0;
     background-color: #e8e8e8;
     --section-gap: 4rem;
+}
+
+.sunset-banner {
+    box-sizing: border-box;
+    background-color: #fff3b0;
+    border-bottom: 2px solid #e6c200;
+    padding: 0.9rem 1.5rem;
+    text-align: center;
+}
+
+.sunset-banner p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #4d3800;
+}
+
+.sunset-banner p a {
+    color: #6b4e00;
+    font-weight: 700;
+    text-decoration: underline;
 }
 
 h1 {
@@ -17,7 +41,8 @@ h1 {
 }
 
 .center {
-    padding: var(--section-gap) 0;
+    box-sizing: border-box;
+    padding: var(--section-gap) 8px;
     margin: 0 auto;
     max-width: 600px;
 }

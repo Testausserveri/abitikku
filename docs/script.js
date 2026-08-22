@@ -27,6 +27,7 @@ function changeLang(lang) {
         child.className = child.id === lang ? "enabled" : "";
     }
     setLang(lang);
+    updateBanner();
     updateMainPage();
 }
 
@@ -36,7 +37,17 @@ if (!isLanguageSupported(getLang())) {
     setLang("en");
 }
 
+function updateBanner() {
+    const lang = getLang();
+    const bannerText = document.getElementById("sunsetBannerText");
+    if (bannerText) {
+        bannerText.innerHTML = getTranslation(lang, "banner.text");
+    }
+}
+
 function updateMainPage() {
+    updateBanner();
+
     if (!window.abitikkuReleases) return;
     const lang = getLang();
     document.getElementById("section1").innerText = getTranslation(lang, "mainPage.section1");
@@ -100,6 +111,7 @@ function updateLinks(version, downloadLinks) {
     otherDownloads.innerText = getTranslation(lang, "download.otherDownloads");
 }
 
+updateBanner(); // pre-update to avoid waiting for fetch
 fetch("https://api.github.com/repos/testausserveri/abitikku/releases/latest")
     .then(res => res.json())
     .then(({ tag_name, assets }) => {
